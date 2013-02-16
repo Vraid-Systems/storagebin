@@ -15,6 +15,9 @@
     <property name="app.config.template" value="app_template.yaml" />
     <property name="build.dir" value="build" />
 
+    <!-- override: -Dpip.path=/usr/bin/pip -->
+    <property name="pip.path" value="pip" />
+
     <property name="autoload.zip" value="django-autoload-0.01.zip" />
     <property name="dbindexer.zip" value="django-dbindexer-0.3.zip" />
     <property name="nonrel.zip" value="django-nonrel-1.3.1.zip" />
@@ -69,7 +72,7 @@
             depends="autoload,dbindexer,nonrel,djangoappengine,djangotoolbox" />
 
     <target name="run-pip">
-        <exec executable="pip" failifexecutionfails="true">
+        <exec executable="${pip.path}" failifexecutionfails="true">
             <arg value="install" />
             <arg value="--download='./${build.dir}'" />
             <arg value="--no-install" />
