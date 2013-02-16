@@ -9,6 +9,7 @@ Run `ant setup` to initialize a local development environment.
 
 Development Dependencies
 ------------
+- [Apache Ant](http://ant.apache.org/bindownload.cgi)
 - a [POSIX](http://en.wikipedia.org/wiki/POSIX#POSIX-oriented_operating_systems)
 shell with `mkdir`, `unzip`, `cp`, `rm`
 - [git](http://git-scm.com/downloads) and [hg](http://mercurial.selenic.com/wiki/Download) binaries in path
