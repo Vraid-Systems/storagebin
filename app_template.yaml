@@ -1,5 +1,5 @@
-application: ctst
-version: 1
+application: REPLACED_BY_ANT
+version: REPLACED_BY_ANT
 runtime: python27
 api_version: 1
 threadsafe: yes

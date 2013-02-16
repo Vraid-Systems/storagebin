@@ -2,6 +2,8 @@
 *.pyc
 .gaedata
 
+app.yaml
+
 django
 djangotoolbox
 djangoappengine
