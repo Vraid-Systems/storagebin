@@ -29,3 +29,6 @@ cp -r build/djangoappengine/djangoappengine ./djangoappengine
 cp -r build/djangotoolbox/djangotoolbox ./djangotoolbox
 
 rm -r ./djangoappengine/djangoappengine.egg-info
+
+rm -fr build
+rm -fr src
