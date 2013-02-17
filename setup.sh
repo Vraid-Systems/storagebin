@@ -9,12 +9,10 @@ fi
 echo APP_ID will be set to: $1
 echo VERSION_ID will be set to: $2
 
-cat app_template.yaml | sed -e 's/application: REPLACE_ME/application: $1/g' > app.yaml
-cat app.yaml | sed -e 's/version: REPLACE_ME/version: $2/g' > app.yaml
+cat app_template.yaml | sed -e 's/application: REPLACE_ME/application: '$1'/g' > app.yaml
+cat app.yaml | sed -e 's/version: REPLACE_ME/version: '$2'/g' > app.yaml
 
-exit 0
-
-mkdir build
+mkdir -p build
 
 pip install --download='./build' --no-install -r requirements.txt
 
