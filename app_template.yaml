@@ -1,5 +1,5 @@
-application: REPLACED_BY_ANT
-version: REPLACED_BY_ANT
+application: REPLACE_ME
+version: REPLACE_ME
 runtime: python27
 api_version: 1
 threadsafe: yes
