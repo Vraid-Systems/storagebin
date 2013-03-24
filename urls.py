@@ -1,9 +1,11 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns
 
 handler500 = 'djangotoolbox.errorviews.server_error'
 
 urlpatterns = patterns('',
-    ('^_ah/warmup$', 'djangoappengine.views.warmup'),
-    ('^$', 'django.views.generic.simple.direct_to_template',
-     {'template': 'home.html'}),
-)
+                       (r'^_ah/warmup$', 'djangoappengine.views.warmup'),
+                       (r'^$',
+                        'django.views.generic.simple.direct_to_template',
+                        {'template': 'home.html'}),
+                       (r'^data/(\w+)$', 'data.router'),
+                       (r'^data/(\w+)/(\d+)$', 'data.router'),)
