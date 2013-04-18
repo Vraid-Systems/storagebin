@@ -17,17 +17,20 @@ def router(request, owner_key = None, data_id = None):
                 const.RESP_KEY_MIME: 'text/html',
                 const.RESP_KEY_STATUS: 200}
     
-    bin_owner = get_owner(owner_key)
+    bin_owner = None
+    if owner_key:
+        bin_owner = get_owner(owner_key)
+    
     if bin_owner:
         if request.method == 'DELETE':
             response = DELETE(bin_owner, data_id)
-        elif request.method == 'GET':
-            response = GET(bin_owner, data_id)
         elif request.method == 'POST':
             if request.FILES and len(request.FILES) == 1:
                 response = POST(bin_owner=bin_owner,
                                 data_id=data_id,
                                 uploaded_file=request.FILES[0])
+    elif request.method == 'GET':
+        response = GET(bin_owner, data_id)
     else:
         response[const.RESP_KEY_CONTENT] = 'invalid owner_key'
         response[const.RESP_KEY_STATUS] = 403

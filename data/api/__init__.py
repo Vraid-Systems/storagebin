@@ -22,7 +22,7 @@ def GET(bin_owner, data_id):
     """Get a binary object from the datastore
     
     Args:
-        bin_owner: the owner Model
+        bin_owner: the owner Model (optional)
         data_id: a numeric identifier for Binary object
     
     Returns:

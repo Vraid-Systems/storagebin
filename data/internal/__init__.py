@@ -22,7 +22,7 @@ def DELETE(bin_owner, data_id):
 
 def GET(bin_owner, data_id):
     binary = Binary.objects.get(id=data_id)
-    if binary and _is_owner(bin_owner, binary):
+    if binary:
         content_key = binary.content_key
         content_type = binary.content_type
         
@@ -74,4 +74,7 @@ def get_owner(owner_key):
     return BinOwner.objects.filter(key=owner_key)
 
 def _is_owner(bin_owner, binary):
-    return (bin_owner.key == binary.owner.key)
+    if bin_owner and binary:
+        return (bin_owner.key == binary.owner.key)
+    else:
+        return False
