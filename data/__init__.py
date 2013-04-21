@@ -2,7 +2,7 @@ import const
 from data.api import DELETE, GET, POST, get_owner
 from django.http import HttpResponse, HttpResponseRedirect
 
-def router(request, owner_key = None, data_id = None):
+def binrouter(request, owner_key = None, data_id = None):
     """route data request to the correct handler and return HTTP response
     
     Args:
