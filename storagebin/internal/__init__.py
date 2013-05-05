@@ -1,41 +1,42 @@
+from django.core.exceptions import ObjectDoesNotExist
+
 from storagebin import const
-from storagebin.internal.util import is_image
-from storagebin.internal.blobstore import get_data_url, put_data
+from storagebin.internal.blobstore import get_image_url, get, put
 from storagebin.internal.blobstore import MAX_SIZE_IN_BYTES
+from storagebin.internal.util import is_image
 from storagebin.models import Binary, BinOwner
 
 ERROR = "ERROR: "
 
 def DELETE(bin_owner, data_id):
-    binary = Binary.objects.get(id=data_id)
-    
+    binary = _get_binary(data_id)
     if binary and _is_owner(bin_owner, binary):
         binary.delete()
         
-        return {const.RESP_KEY_CONTENT: 'DELETE: ' + data_id,
+        return {const.RESP_KEY_CONTENT: 'DELETE: data_id=' + str(data_id),
                 const.RESP_KEY_MIME: 'text/html',
                 const.RESP_KEY_STATUS: 200}
     else:
-        return {const.RESP_KEY_CONTENT: ERROR + 'unable to find ' + data_id,
+        return {const.RESP_KEY_CONTENT: ERROR + 'unable to find ' + str(data_id),
                 const.RESP_KEY_MIME: 'text/html',
                 const.RESP_KEY_STATUS: 404}
 
-def GET(bin_owner, data_id):
-    binary = Binary.objects.get(id=data_id)
+def GET(data_id):
+    binary = _get_binary(data_id)
+
     if binary:
         content_key = binary.content_key
         content_type = binary.content_type
-        
         if is_image(content_type):
-            return {const.RESP_KEY_CONTENT: get_data_url(content_key),
-                    const.RESP_KEY_MIME: 'text/html',
+            return {const.RESP_KEY_CONTENT: get_image_url(content_key),
+                    const.RESP_KEY_MIME: content_type,
                     const.RESP_KEY_STATUS: 302}
         else:
-            return {const.RESP_KEY_CONTENT: ERROR + 'unsupported Content-Type ' + content_type,
-                    const.RESP_KEY_MIME: 'text/html',
-                    const.RESP_KEY_STATUS: 400}
+            return {const.RESP_KEY_CONTENT: get(content_key),
+                    const.RESP_KEY_MIME: content_type,
+                    const.RESP_KEY_STATUS: 200}
     else:
-        return {const.RESP_KEY_CONTENT: ERROR + 'unable to find ' + data_id,
+        return {const.RESP_KEY_CONTENT: ERROR + 'unable to find ' + str(data_id),
                 const.RESP_KEY_MIME: 'text/html',
                 const.RESP_KEY_STATUS: 404}
     
