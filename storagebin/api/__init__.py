@@ -18,11 +18,10 @@ def DELETE(bin_owner, data_id):
     """
     return int_DELETE(bin_owner, data_id)
 
-def GET(bin_owner, data_id):
+def GET(data_id):
     """Get a binary object from the datastore
     
     Args:
-        bin_owner: the owner Model (optional)
         data_id: a numeric identifier for Binary object
     
     Returns:
@@ -31,7 +30,7 @@ def GET(bin_owner, data_id):
          RESP_KEY_MIME: 'text/html',
          RESP_KEY_STATUS: 302}
     """
-    return int_GET(bin_owner, data_id)
+    return int_GET(data_id)
 
 def POST(bin_owner, data_id, uploaded_file):
     """Add/update a binary object to/in the datastore
@@ -56,6 +55,6 @@ def get_owner(owner_key):
         owner_key: string finger print of the user
     
     Returns:
-        Boolean
+        BinOwner
     """
     return int_get_owner(owner_key)
