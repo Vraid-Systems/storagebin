@@ -1,0 +1,10 @@
+[
+  {
+    "model": "data.binowner",
+    "pk": 1,
+    "fields": {
+      "email": "example@example.com",
+      "key": "example"
+    }
+  }
+]
