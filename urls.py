@@ -7,5 +7,5 @@ urlpatterns = patterns('',
                        (r'^$',
                         'django.views.generic.simple.direct_to_template',
                         {'template': 'home.html'}),
-                       (r'^data/(\w+)$', 'data.binrouter'),
-                       (r'^data/(\w+)/(\d+)$', 'data.binrouter'),)
+                       (r'^data/(\w+)$', 'storagebin.binrouter'),
+                       (r'^data/(\w+)/(\d+)$', 'storagebin.binrouter'),)

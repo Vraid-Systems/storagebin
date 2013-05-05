@@ -1,5 +1,5 @@
 import const
-from data.api import DELETE, GET, POST, get_owner
+from storagebin.api import DELETE, GET, POST, get_owner
 from django.http import HttpResponse, HttpResponseRedirect
 
 def binrouter(request, owner_key = None, data_id = None):

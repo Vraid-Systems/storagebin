@@ -1,8 +1,8 @@
-from data import const
-from data.internal.util import is_image
-from data.internal.blobstore import get_data_url, put_data
-from data.internal.blobstore import MAX_SIZE_IN_BYTES
-from data.models import Binary, BinOwner
+from storagebin import const
+from storagebin.internal.util import is_image
+from storagebin.internal.blobstore import get_data_url, put_data
+from storagebin.internal.blobstore import MAX_SIZE_IN_BYTES
+from storagebin.models import Binary, BinOwner
 
 ERROR = "ERROR: "
 

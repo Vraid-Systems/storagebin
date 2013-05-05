@@ -1,7 +1,7 @@
-from data.internal import DELETE as int_DELETE
-from data.internal import GET as int_GET
-from data.internal import POST as int_POST
-from data.internal import get_owner as int_get_owner
+from storagebin.internal import DELETE as int_DELETE
+from storagebin.internal import GET as int_GET
+from storagebin.internal import POST as int_POST
+from storagebin.internal import get_owner as int_get_owner
 
 def DELETE(bin_owner, data_id):
     """Delete a binary object from the datastore
