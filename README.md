@@ -40,7 +40,7 @@ to stabilize.
 Python interpreter:
 
 ```python
-from storagebin.models import Binary, BinOwner
+from storagebin.models import BinOwner
 bin_owner = BinOwner(email='example@example.com', key='example')
 bin_owner.save()
 ```
