@@ -42,7 +42,7 @@ def binrouter(request, owner_key = None, data_id = None):
 
     if response[const.RESP_KEY_STATUS] == 302:
         r_content = response[const.RESP_KEY_CONTENT]
-        return HttpResponseRedirect(response=r_content)
+        return HttpResponseRedirect(r_content)
     else:
         aHttpResponse = HttpResponse(content=response[const.RESP_KEY_CONTENT],
                             mimetype=response[const.RESP_KEY_MIME],
