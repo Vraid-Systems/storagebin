@@ -18,10 +18,6 @@
     </head>
     
     <body>
-        <div id="header">
-            <a id="logo" href="/">storagebin</a>
-        </div>
-        
         <div class="columns">
             <div id="content" class="column">
                 {% block content-header %}
@@ -38,15 +34,11 @@
                 
                 {% block content %}{% endblock %}
             </div>
-            
-            <div id="sidebar" class="column">
-                {% block sidebar %} {% endblock %}
-            </div>
         </div>
         
         <div id="footer">
             <p>
-                Powered by <a href="https://github.com/django-nonrel">django-nonrel</a>
+                Powered by <a href="https://github.com/jzerbe/storagebin">storagebin</a>
             </p>
         </div>
         

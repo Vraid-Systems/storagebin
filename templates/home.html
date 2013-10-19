@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}edit me{% endblock %}
+{% block title %}usage{% endblock %}
 
 {% block content %}
 
-this is where content will go
+<b>data_id</b> - unsigned numeric identifier/key of object<br />
+<b>owner_key</b> - text string used in identifing object owner to this system<br />
+<br />
+Store object data:<br />
+POST /data/[owner_key]/[data_id]<br />
+<i>multipart/form-data</i> payload with <b>file</b> parameter containing file data.<br />
+<br />
+Retrieve object data in response body:<br />
+GET /data/public/[data_id]<br />
+GET /data/[owner_key]/[data_id]<br />
+<br />
+Delete object data:<br />
+DELETE /data/[owner_key]/[data_id]<br />
 
 {% endblock %}
