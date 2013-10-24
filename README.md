@@ -14,16 +14,8 @@ For use with [storagebin_js](https://github.com/jzerbe/storagebin_js).
 
 Development Dependencies
 ------------
-- a standard [POSIX](http://en.wikipedia.org/wiki/POSIX#POSIX-oriented_operating_systems)
-shell with unzip and tar binaries installed
+- a standard [POSIX](http://en.wikipedia.org/wiki/POSIX#POSIX-oriented_operating_systems) shell
 - [git](http://git-scm.com/downloads) and [hg](http://mercurial.selenic.com/wiki/Download) binaries in path
-- [pip](http://pypi.python.org/pypi/pip) binary in path
-
-Gotchas
-------------
-- When using ssh transport
-GitHub requires you to have the public-key of the cloning machine on file,
-even when cloning from a public repository.
 
 Tested Dev Environments
 ------------
