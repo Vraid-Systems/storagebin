@@ -1,3 +1,3 @@
-from taskifier.tests.queue import *
-from taskifier.tests.helpers import *
-from taskifier.tests.full import *
+from storagebin.tests.full import *
+from storagebin.tests.queue import *
+from storagebin.tests.utils import *
