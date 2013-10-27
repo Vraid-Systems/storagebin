@@ -20,7 +20,8 @@ def binrouter(request, owner_key = None, data_id = None):
     
     # no permissions are enforced for GET
     if request.method == 'GET':
-        return getHttpResponse(GET(data_id))
+        content, content_type, status = GET(data_id)
+        return getHttpResponse(content, content_type, status)
     
     # hydrate bin_owner for all other request.method types
     bin_owner = None
@@ -31,12 +32,14 @@ def binrouter(request, owner_key = None, data_id = None):
     
     # only owners can delete their data objects
     if request.method == 'DELETE':
-        return getHttpResponse(DELETE(bin_owner, data_id))
+        content, content_type, status = DELETE(bin_owner, data_id)
+        return getHttpResponse(content, content_type, status)
     
     # only authed users can store data on this system
     if request.method == 'POST':
         if request.FILES and len(request.FILES) == 1:
-            return getHttpResponse(POST(bin_owner, data_id, request.FILES['file']))
+            content, content_type, status = POST(bin_owner, data_id, request.FILES['file'])
+            return getHttpResponse(content, content_type, status)
     
     # default NOOP response
     return getHttpResponse()
@@ -54,5 +57,5 @@ def getHttpResponse(content='', content_type=const.CONTENT_TYPE_HTML, status=con
     if status == const.HTTP_STATUS_302:
         http_response = HttpResponseRedirect(content)
     else:
-        http_response = HttpResponse(content, content, content_type=content_type, status=status)
+        http_response = HttpResponse(content=content, content_type=content_type, status=status)
     return addCORSHeaders(http_response)
