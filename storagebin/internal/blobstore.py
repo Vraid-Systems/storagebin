@@ -1,9 +1,9 @@
 from __future__ import with_statement
 from google.appengine.api import files
 from google.appengine.api.images import get_serving_url
-from google.appengine.ext.blobstore import delete, BlobReader
+from google.appengine.ext.blobstore import delete, BlobReader, MAX_BLOB_FETCH_SIZE
 
-MAX_SIZE_IN_BYTES = 31457280
+MAX_SIZE_IN_BYTES = MAX_BLOB_FETCH_SIZE - 1 #1015807 bytes ~ 0.969MB
 
 def get_image_url(blob_key):
     return get_serving_url(blob_key)
@@ -22,6 +22,6 @@ def put(uploaded_file, existing_blob_key):
         f.write(uploaded_file.read())
     files.finalize(file_name)
     
-    # return the blob_key for storage to the main datastore
+    # return the blob_key associated with the new data
     blob_key = files.blobstore.get_blob_key(file_name)
     return blob_key

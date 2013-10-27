@@ -1,0 +1,6 @@
+- model: storagebin.BinOwner
+  pk: 1
+  fields:
+    email: example@example.com
+    key: example
+    modified: "2013-10-19T17:54:28+00:00"
