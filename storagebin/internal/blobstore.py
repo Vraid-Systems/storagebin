@@ -22,6 +22,6 @@ def put(uploaded_file, existing_blob_key):
         f.write(uploaded_file.read())
     files.finalize(file_name)
     
-    # return the blob_key for storage to the main datastore
+    # return the blob_key associated with the new data
     blob_key = files.blobstore.get_blob_key(file_name)
     return blob_key
