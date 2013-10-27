@@ -36,7 +36,7 @@ def binrouter(request, owner_key = None, data_id = None):
     # only authed users can store data on this system
     if request.method == 'POST':
         if request.FILES and len(request.FILES) == 1:
-            return getHttpResponse(bin_owner, data_id, request.FILES['file'])
+            return getHttpResponse(POST(bin_owner, data_id, request.FILES['file']))
     
     # default NOOP response
     return getHttpResponse()
