@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from storagebin import const
 from storagebin.internal.blobstore import get_image_url, get, put
 from storagebin.internal.blobstore import MAX_SIZE_IN_BYTES
@@ -20,6 +22,9 @@ def GET(data_id):
     if binary:
         content_key = binary.content_key
         content_type = binary.content_type
+        
+        binary.last_access = datetime.utcnow()
+        binary.save()
         
         if is_image(content_type):
             return get_image_url(content_key), content_type, const.HTTP_STATUS_302
