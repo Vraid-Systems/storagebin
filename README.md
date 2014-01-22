@@ -24,8 +24,9 @@ Tested Dev Environments
 
 Development Commands
 ------------
-- load example `BinOwner` for local testing: `python manage.py loaddata storagebin/fixtures/test_data.yaml`
-- local dev server: `python manage.py runserver`
+- run unit tests: `python manage.py test storagebin`
+- load example `BinOwner` for local manual testing: `python manage.py loaddata storagebin/fixtures/test_data.yaml`
+- run local dev server: `python manage.py runserver`
 
 Production Deploy
 ------------
