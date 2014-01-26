@@ -15,7 +15,7 @@ def cron(request): #called by cron.yaml through django
     if delete_count is None:
         return no_old_data_resp
     
-    return getHttpResponse(content=delete_count + " records deleted",
+    return getHttpResponse(content=str(delete_count) + " records deleted",
                            content_type=const.CONTENT_TYPE_TEXT)
 
 def _older_than_90_days():
