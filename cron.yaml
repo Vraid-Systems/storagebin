@@ -1,0 +1,5 @@
+cron:
+- description: check for and remove old binary data
+  url: /prune/cron
+  schedule: every monday 02:00
+  timezone: America/Chicago
