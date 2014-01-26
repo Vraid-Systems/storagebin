@@ -5,7 +5,7 @@ class Binary(models.Model):
     content_key = models.TextField()
     content_type = models.TextField()
     modified = models.DateTimeField(auto_now=True, auto_now_add=True)
-    last_access = models.DateTimeField()
+    last_access = models.DateTimeField(null=True)
 
 class BinOwner(models.Model):
     email = models.EmailField()

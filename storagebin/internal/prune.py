@@ -20,7 +20,7 @@ def cron(request): #called by cron.yaml through django
 
 def _older_than_90_days():
     earlier_by_90_days = datetime.utcnow() - timedelta(days = 90)
-    return Binary.objects.filter(last_access__lte=earlier_by_90_days)
+    return Binary.objects.exclude(last_access__isnull=True).filter(last_access__lte=earlier_by_90_days)
 
 def _delete_old_Binary_objs(db_Binary_objs):
     if db_Binary_objs is None:
