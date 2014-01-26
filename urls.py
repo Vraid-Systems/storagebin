@@ -9,4 +9,4 @@ urlpatterns = patterns('',
                         {'template': 'home.html'}),
                        (r'^data/(\w+)$', 'storagebin.binrouter'),
                        (r'^data/(\w+)/(\d+)$', 'storagebin.binrouter'),
-                       (r'^prune/cron', 'storagebin.internal.prune.cron'),)
+                       (r'^prune/cron$', 'storagebin.internal.prune.cron'),)
