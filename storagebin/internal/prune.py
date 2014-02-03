@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 from storagebin import const, getHttpResponse
+from storagebin.internal.blobstore import delete as delete_wrapper
 from storagebin.models import Binary
 
 def cron(request): #called by cron.yaml through django
@@ -11,6 +12,8 @@ def cron(request): #called by cron.yaml through django
     if db_Binary_objs is None:
         return no_old_data_resp
     
+    # ALWAYS run blob deletion before killing datastore lookup objects
+    _delete_old_Blobs(db_Binary_objs)
     delete_count = _delete_old_Binary_objs(db_Binary_objs)
     if delete_count is None:
         return no_old_data_resp
@@ -27,7 +30,16 @@ def _delete_old_Binary_objs(db_Binary_objs):
         return None
     
     delete_count = len(db_Binary_objs)
-    for db_Binary_obj in db_Binary_objs:
-        db_Binary_obj.delete()
+    db_Binary_objs.delete()
     
     return delete_count
+
+def _delete_old_Blobs(db_Binary_objs):
+    if db_Binary_objs is None:
+        return
+    
+    blob_keys = list()
+    for db_Binary_obj in db_Binary_objs:
+        if db_Binary_obj.content_key:
+            blob_keys.append(db_Binary_obj.content_key)
+    delete_wrapper(blob_keys)
